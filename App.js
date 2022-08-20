@@ -1,5 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet, TextInput, StatusBar } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  TextInput,
+  StatusBar,
+} from 'react-native';
 import CoinItem from './components/CoinItem';
 
 const App = () => {
@@ -36,13 +43,17 @@ const App = () => {
       <FlatList
         style={style.list}
         showsVerticalScrollIndicator={false}
-        data={coins.filter((coin) => coin.name.toLowerCase().includes(search) || coin.symbol.toLowerCase().includes(search))}
-        renderItem={({ item }) => {
+        data={coins.filter(
+          (coin) =>
+            coin.name.toLowerCase().includes(search) ||
+            coin.symbol.toLowerCase().includes(search)
+        )}
+        renderItem={({item}) => {
           return <CoinItem coin={item} />;
         }}
         refreshing={refreshing}
-        onRefresh={ async () => {
-          setRefreshing(true); 
+        onRefresh={async () => {
+          setRefreshing(true);
           await loadData();
           setRefreshing(false);
         }}

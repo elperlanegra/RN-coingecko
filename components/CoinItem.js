@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 
-const CoinItem = ({ coin }) => {
+const CoinItem = ({coin}) => {
   return (
     <View style={styles.containerItem}>
       <View style={styles.coinName}>
-        <Image style={styles.image} source={{ uri: coin.image }} />
+        <Image style={styles.image} source={{uri: coin.image}} />
         <View style={styles.containerNames}>
           <Text style={styles.text}>{coin.name}</Text>
           <Text style={styles.textSymbol}>{coin.symbol}</Text>
@@ -14,19 +14,21 @@ const CoinItem = ({ coin }) => {
 
       <View>
         <Text style={styles.textPrice}>${coin.current_price}</Text>
-        <Text style={[
-          styles.pricePercentage, 
-          coin.price_change_percentage_24h > 0 ? 
-          styles.priceUp 
-          : styles.priceDown,
-          ]}>
+        <Text
+          style={[
+            styles.pricePercentage,
+            coin.price_change_percentage_24h > 0
+              ? styles.priceUp
+              : styles.priceDown,
+          ]}
+        >
           {coin.price_change_percentage_24h}
         </Text>
       </View>
     </View>
   );
 };
- 
+
 const styles = StyleSheet.create({
   containerItem: {
     backgroundColor: '#121212',
@@ -56,11 +58,11 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   pricePercentage: {
-    textAlign: 'right'
+    textAlign: 'right',
   },
   textPrice: {
     color: '#fff',
-    textAlign: 'right'
+    textAlign: 'right',
   },
   priceUp: {
     color: '#00B5B9',

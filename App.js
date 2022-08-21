@@ -8,6 +8,7 @@ import {
   StatusBar,
 } from 'react-native';
 import CoinItem from './components/CoinItem';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const App = () => {
   const [coins, setCoins] = useState([]);
@@ -31,13 +32,19 @@ const App = () => {
     <View style={style.container}>
       <StatusBar backgroundColor="#141414" />
       <View style={style.header}>
-        <Text style={style.title}>CoinGecko</Text>
-        <TextInput
-          style={style.searchInput}
-          placeholder="Search a Coins"
-          placeholderTextColor="#858585"
-          onChangeText={(text) => setSearch(text)}
-        />
+        <Text style={style.title}>CoinsNerdify</Text>
+
+        <View style={style.search}>
+          <TextInput
+            style={style.searchInput}
+            placeholder="Search a Coins"
+            placeholderTextColor="#858585"
+            autoCapitalize="none"
+            autoCorrect={false}
+            onChangeText={(text) => setSearch(text)}
+          />
+          <Ionicons style={style.icon} name="search" size={16} />
+        </View>
       </View>
 
       <FlatList
@@ -77,17 +84,23 @@ const style = StyleSheet.create({
     width: '90%',
   },
   header: {
+    width: '90%',
+  },
+  search: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '90%',
-    marginBottom: 10,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  icon: {
+    color: 'white',
   },
   searchInput: {
     color: '#fff',
     borderBottomColor: '#4657CE',
     borderBottomWidth: 1,
-    width: '40%',
-    textAlign: 'center',
+    width: '90%',
+    textAlign: 'left',
   },
 });
 
